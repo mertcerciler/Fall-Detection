@@ -6,14 +6,14 @@ In this project, wearable-sensor data from a group of subjects performing either
 
 Initially, exploratory data analysis is conducted via clustering. For clustering, it is good to visualize data. Since the number of features are relatively large to visualize, PCA is performed to reduce the number of features 306 to 2. The variance of the first and second principal components are 0.753 and 0.085, respectively. So two components contains ~84% of information together. Before performing the clustering, anomaly detection is needed to be done. It is needed to remove one row from the dataset in order to make a proper clustering. 504th row of the dataset there is unnecessarily huge number in some column and it makes the clustering very hard. K-means clustering is performed with different number of clusters, and the error is calculated. Below graph represents the errors with different k numbers.
 
-<img src="3.png">
+<img src="/img/3.png">
 
 Then k-means clustering is performed with k=2. Below graph represents the resulting graph. 
 
-<img src="1.png"> 
+<img src="/img/1.png"> 
 
 According to the graph above, non-fall actions are observed when each Principal Component has relatively small value, and the fall actions are observed when they have relatively high value. However, making the classification according to these clustering is not possible. Although one of the cluster centers points the fall actions directly, the other one points the both fall and non fall actions, which makes the possibility of making classification according to these clusters is not possible. 
 
 After the exploration is complete, we proceed to supervised learning stage. After splitting the dataset according to given inputs, SVM Classifier model is built to train our training dataset, and accuracy score is calculated with validation dataset and it is stored in an array which stores all the accuracy scores of each model. After calculating the accuracy of SVM Classifier with validation set, the next step is building the MLP Classifier model. Different parameters are experimented while training this model (hyper_parameters array in the code). Hidden layer sizes, learning rates and maximum iterations are changed and accuracy scores of each parameter is stored in the array of accuracy scores. After calculating all of the accuracy scores, the maximum value of the accuracy scores array is retrieved and according to index of the maximum value, corresponding model with corresponding parameters is used for predicting the test set. Since there is no certain result of accuracy scores (in fact there is no certain model with certain parameters that gives the best accuracy score), it is more convenient that printing the accuracy scores to console when the program is executed instead of display them in the table in this report. However, from my observation, it can be said that MLP Classifier gives more accurate results than the SVM Classifier. To exemplify an output when the program is executed for the Part B, the screenshot of console is shown in figure below. 
 
-<img src="2.png">
+<img src="/img/2.png">
